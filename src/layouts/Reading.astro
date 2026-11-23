@@ -1,0 +1,14 @@
+---
+import Site from './Site.astro';
+import { pathAtBase } from '../lib/urls.mjs';
+interface Props { title: string; summary: string; eyebrow: string; back: { path: string; label: string }; canonicalPath: string; }
+const { title, summary, eyebrow, back, canonicalPath } = Astro.props;
+---
+<Site title={title} description={summary} canonicalPath={canonicalPath}>
+  <div class="reading-decor" aria-hidden="true"><span>IDEAS / IN / PRACTICE</span></div>
+  <article class="reading-surface">
+    <a class="back-link" href={pathAtBase(back.path, import.meta.env.BASE_URL)}>{back.label}</a>
+    <header class="reading-header"><p class="eyebrow">{eyebrow}</p><h1>{title}</h1><p class="reading-summary">{summary}</p><slot name="metadata" /></header>
+    <div class="prose"><slot /></div>
+  </article>
+</Site>

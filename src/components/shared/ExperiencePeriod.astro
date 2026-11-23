@@ -1,0 +1,7 @@
+---
+interface Props { start?: string; end?: string; period?: string; status?: 'incoming' | 'current' | 'completed'; }
+const { start, end, period, status } = Astro.props;
+const date = (value: string) => new Date(`${value}-01T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+const label = period ?? (start ? `${date(start)}${end ? ` – ${date(end)}` : status === 'current' ? ' – Present' : ''}` : '');
+---
+<p class="experience-period">{status === 'incoming' && <span class="experience-status">Incoming</span>}{label && <span>{label}</span>}</p>

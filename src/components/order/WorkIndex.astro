@@ -1,0 +1,15 @@
+---
+import { catalog } from '../../lib/catalog';
+import { pathAtBase } from '../../lib/urls.mjs';
+const { entries: allEntries } = await catalog();
+const entries = allEntries.filter(entry => entry.type === 'Experience' || entry.type === 'Project');
+const href = (path: string) => pathAtBase(path, import.meta.env.BASE_URL);
+---
+<section class="work-index" aria-labelledby="work-index-title">
+  <div class="section-top"><h2 id="work-index-title">Projects & experience</h2><span class="eyebrow">Index</span></div>
+  <div class="text-index">
+    {['Experience', 'Project'].map(type => <div class="index-group"><h3>{`${type}s`}</h3>
+      <ul class="index-list">{entries.filter(entry => entry.type === type).map(entry => <li><a class="index-row" href={href(entry.path)} data-index={entry.ref}><span class="index-title">{entry.data.title}</span><span class="index-meta">{entry.type === 'Experience' && entry.data.status === 'incoming' ? 'Incoming' : 'View'}</span></a></li>)}</ul>
+    </div>)}
+  </div>
+</section>

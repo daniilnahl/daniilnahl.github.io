@@ -1,0 +1,23 @@
+---
+import Site from '../layouts/Site.astro';
+import site from '../data/site.json';
+import skills from '../data/skills.json';
+import { pathAtBase } from '../lib/urls.mjs';
+import Listening from '../components/shared/Listening.astro';
+import { catalog } from '../lib/catalog';
+import { render } from 'astro:content';
+const { personal } = await catalog();
+const rendered = await Promise.all(personal.map(async entry => ({ entry, ...await render(entry) })));
+---
+<Site title="About" canonicalPath="/about/">
+  <div class="page-heading"><p class="eyebrow">About me</p><h1>Hi, I'm {site.name}.</h1><p>{site.biography}</p></div>
+  <section class="about-intro"><div class="about-mark" aria-hidden="true">d<span>?</span></div><div><h2>Outside of engineering</h2><p>{site.aboutNote}</p><div class="about-links"><a href={`mailto:${site.email}`}>Let’s talk.</a><a href={site.github}>GitHub</a><a href={site.linkedin}>LinkedIn</a><a href={site.researchNotebook}>Research notebook</a><a href={pathAtBase(site.resume, import.meta.env.BASE_URL)} data-no-mode download="Daniil-Nahliuk-Resume.pdf">Download résumé (PDF)</a></div></div></section>
+  <section class="education-section" aria-labelledby="education-title">
+    <p class="eyebrow">Education</p><h2 id="education-title">{site.education.degree}</h2><p class="education-school">{site.education.institution}</p>
+    <p>{site.education.start} – expected {site.education.expectedGraduation}<span class="education-gpa">GPA {site.education.gpa}</span></p>
+    <h3>Relevant coursework</h3><ul class="coursework-list">{site.education.coursework.map(course => <li>{course}</li>)}</ul>
+  </section>
+  <section class="skills-section" aria-labelledby="skills-title"><p class="eyebrow">Skills</p><h2 id="skills-title">Tools & technologies</h2><div class="skills-grid">{skills.map(group => <div><h3>{group.label}</h3><ul>{group.items.map(item => <li>{item}</li>)}</ul></div>)}</div></section>
+  {rendered.length > 0 && <div class="personal-collection">{rendered.map(({ entry, Content }) => <section id={entry.id} class="personal-entry"><p class="eyebrow">{entry.data.kind} {entry.data.placeholder && '· Personal collection placeholder'}</p><h2>{entry.data.title}</h2><p>{entry.data.summary}</p>{entry.data.image && <img src={`${import.meta.env.BASE_URL}${entry.data.image.src.replace(/^\//, '')}`} alt={entry.data.image.alt} width={entry.data.image.width} height={entry.data.image.height} loading="lazy" />}<div class="prose"><Content /></div>{entry.data.external && <a href={entry.data.external}>Explore more</a>}</section>)}</div>}
+  <Listening />
+</Site>

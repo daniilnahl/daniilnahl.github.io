@@ -1,0 +1,49 @@
+{
+  "name": "Daniil",
+  "fullName": "Daniil Nahliuk",
+  "email": "daniil.nahliuk1@gmail.com",
+  "github": "https://github.com/daniilnahl",
+  "url": "https://daniilnahl.github.io",
+  "base": "/",
+  "description": "Daniil Nahliuk — Computer Engineering student at the University of Washington. Projects in embedded systems, firmware, and machine learning.",
+  "biography": "I'm Daniil, a Computer Engineering student at the University of Washington. I'm based in Tacoma, WA. At Idaho National Laboratory, I worked on secure boot and multicore firmware. I also researched federated intrusion detection at UW's SESAIS Lab.",
+  "navigation": [
+    {
+      "label": "Experience",
+      "path": "/experience/"
+    },
+    {
+      "label": "Projects",
+      "path": "/projects/"
+    },
+    {
+      "label": "Blog",
+      "path": "/blog/"
+    },
+    {
+      "label": "About",
+      "path": "/about/"
+    }
+  ],
+  "introduction": "I work mostly with embedded systems, C/C++, and machine learning. Here are some of my projects and the work I've done.",
+  "location": "Tacoma, WA",
+  "linkedin": "https://www.linkedin.com/in/daniil-nahliuk-4213aa322/",
+  "kaggle": "https://www.kaggle.com/daniilnahliuk1/code",
+  "aboutNote": "Outside of engineering, I'm interested in history, philosophy, music, and learning about different places.",
+  "education": {
+    "institution": "University of Washington",
+    "degree": "B.S. Computer Engineering",
+    "start": "Sep 2025",
+    "expectedGraduation": "Aug 2027",
+    "gpa": "3.55",
+    "coursework": [
+      "Operating Systems",
+      "Microprocessors",
+      "Machine Organization & Architecture",
+      "Data Structures",
+      "Digital System Design"
+    ]
+  },
+  "resume": "/documents/daniil-nahliuk-resume.pdf",
+  "researchNotebook": "https://www.kaggle.com/code/daniilnahliuk1/ids-multi-dataset-preprocessing-pipeline"
+}

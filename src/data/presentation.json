@@ -1,0 +1,21 @@
+{
+  "projectOrder": [
+    "aqmod",
+    "stm32-alarm-clock",
+    "edge-impulse-workshops",
+    "djr-trail-finder",
+    "stock-tracking-app",
+    "mini-projects"
+  ],
+  "labyrinthProjects": [
+    "aqmod",
+    "stm32-alarm-clock",
+    "edge-impulse-workshops",
+    "djr-trail-finder"
+  ],
+  "experienceOrder": [
+    "boeing",
+    "inl",
+    "uw-research"
+  ]
+}

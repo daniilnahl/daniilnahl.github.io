@@ -1,0 +1,15 @@
+---
+import { render } from 'astro:content';
+import { catalog } from '../../lib/catalog';
+import Reading from '../../layouts/Reading.astro';
+export async function getStaticPaths() {
+  const { posts } = await catalog();
+  return posts.map(post => ({ params: { slug: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+<Reading title={post.data.title} summary={post.data.summary} eyebrow="Writing" back={{ path: '/blog/', label: 'All writing' }} canonicalPath={`/blog/${post.id}/`}>
+  <div slot="metadata" class="article-dates"><time datetime={post.data.published.toISOString()}>{post.data.published.toLocaleDateString('en-US', { dateStyle: 'long', timeZone: 'UTC' })}</time>{post.data.updated && <span> · Updated <time datetime={post.data.updated.toISOString()}>{post.data.updated.toLocaleDateString('en-US', { dateStyle: 'long', timeZone: 'UTC' })}</time></span>}</div>
+  <Content />
+</Reading>

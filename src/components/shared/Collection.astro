@@ -1,0 +1,10 @@
+---
+import { pathAtBase } from '../../lib/urls.mjs';
+import { chaosTreatment } from '../../lib/content.mjs';
+interface Props { entries: { id: string; path: string; data: { title: string; summary: string; tags: string[]; placeholder?: boolean; chaos?: object; dates?: string; dateLabel?: string; } }[]; }
+const { entries } = Astro.props;
+---
+<div class="collection">{entries.map((entry, index) => {
+  const treatment = chaosTreatment(entry.data, index);
+  return <a class={`collection-entry geometry-${treatment.geometry} palette-${treatment.palette} scale-${treatment.scale}`} style={`--rotation:${treatment.rotation}deg`} href={pathAtBase(entry.path, import.meta.env.BASE_URL)}><div><p class="eyebrow">{entry.data.placeholder ? 'Personal · Placeholder' : entry.data.tags.join(' / ').replaceAll('-', ' ')}</p><h2>{entry.data.title}</h2>{entry.data.dates && <p class="collection-date">{entry.data.dateLabel ? `${entry.data.dateLabel} · ` : ''}{entry.data.dates}</p>}</div><p>{entry.data.summary}</p>{treatment.artwork && <img class="chaos-artwork" src={pathAtBase(treatment.artwork, import.meta.env.BASE_URL)} alt="" width="360" height="240" loading="lazy" />}<span class="collection-open">Explore</span></a>;
+})}</div>

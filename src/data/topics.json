@@ -1,0 +1,32 @@
+[
+  {
+    "id": "embedded-systems",
+    "label": "Embedded systems",
+    "description": "Firmware and microcontroller projects."
+  },
+  {
+    "id": "tinyml",
+    "label": "TinyML",
+    "description": "Machine learning on microcontrollers."
+  },
+  {
+    "id": "software",
+    "label": "Software",
+    "description": "Python, Rust, C, and C++ projects."
+  },
+  {
+    "id": "teaching",
+    "label": "Sharing knowledge",
+    "description": "Workshops and tutorials I've written."
+  },
+  {
+    "id": "security",
+    "label": "Systems security",
+    "description": "Secure boot and intrusion detection."
+  },
+  {
+    "id": "federated-learning",
+    "label": "Federated learning",
+    "description": "Distributed training for intrusion-detection research."
+  }
+]
