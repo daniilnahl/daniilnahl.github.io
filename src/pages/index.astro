@@ -1,0 +1,29 @@
+---
+import Site from '../layouts/Site.astro';
+import ExperiencePeriod from '../components/shared/ExperiencePeriod.astro';
+import WorkIndex from '../components/order/WorkIndex.astro';
+import Labyrinth from '../components/chaos/Labyrinth.astro';
+import { catalog } from '../lib/catalog';
+import site from '../data/site.json';
+import { pathAtBase } from '../lib/urls.mjs';
+const { experiences, projects, posts } = await catalog();
+const href = (path: string) => pathAtBase(path, import.meta.env.BASE_URL);
+---
+<Site home>
+  <section class="intro">
+    <div class="intro-meta"><span class="eyebrow">{site.fullName}</span><span class="intro-aside">Embedded systems / Security / Machine learning</span></div>
+    <h1>Hi, I'm Daniil.<br /><span>Computer Engineering @ UW.</span></h1>
+    <div class="intro-bottom"><p>{site.introduction}</p><div class="intro-links"><a href={href('/about/')}>About me</a><a href={href(site.resume)} data-no-mode download="Daniil-Nahliuk-Resume.pdf">Download résumé (PDF)</a></div></div>
+  </section>
+  <section class="home-experience" aria-labelledby="home-experience-title">
+    <div class="section-top"><h2 id="home-experience-title">Experience & research</h2><a href={href('/experience/')}>All experience</a></div>
+    <div class="home-experience-list">{experiences.map(entry => <a href={href(`/experience/#${entry.id}`)}><ExperiencePeriod start={entry.data.start} end={entry.data.end} period={entry.data.period} status={entry.data.status} /><p class="eyebrow">{entry.data.organization}</p><h3>{entry.data.role}</h3><p>{entry.data.summary}</p></a>)}</div>
+  </section>
+  <div class="order-home" data-mode-shell="order"><WorkIndex />
+    <section class="selected-work"><div class="section-top"><h2>Selected work</h2><a href={href('/projects/')}>All projects</a></div>
+      <div class="selected-grid">{projects.filter(p => p.data.featured).map((p, i) => <a class={`selected-project selected-${i}`} href={href(`/projects/${p.id}/`)}><div class="project-art" aria-hidden="true">{i === 0 ? <><span class="art-chip">ESP32-S3</span><i class="trace trace-a"></i><i class="trace trace-b"></i><i class="trace trace-c"></i></> : i === 1 ? <><span class="art-clock">07:30</span><span class="art-clock-label">ALARM / ENABLED</span></> : <><span class="art-signal">∿∿∿</span><span class="art-pipeline">DATA · MODEL · DEVICE</span></>}</div><p class="eyebrow">{p.data.technologies.slice(0, 2).join(' / ')}</p><h3>{p.data.title}</h3><p>{p.data.summary}</p></a>)}</div>
+    </section>
+    <section class="writing-teaser"><div><p class="eyebrow">Blog</p><h2>Notes</h2></div><div>{posts.length ? posts.slice(0, 3).map(p => <p><a href={href(`/blog/${p.id}/`)}>{p.data.title}</a></p>) : <p>Nothing published yet.</p>}<a href={href('/blog/')}>Visit the blog</a></div></section>
+  </div>
+  <div class="chaos-home" data-mode-shell="chaos" hidden inert><Labyrinth /></div>
+</Site>

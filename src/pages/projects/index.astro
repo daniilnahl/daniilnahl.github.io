@@ -1,0 +1,12 @@
+---
+import Site from '../../layouts/Site.astro';
+import Collection from '../../components/shared/Collection.astro';
+import { catalog } from '../../lib/catalog';
+const { entries, topics } = await catalog();
+const projects = entries.filter(e => e.type === 'Project');
+---
+<Site title="Projects" canonicalPath="/projects/">
+  <div class="page-heading"><p class="eyebrow">Embedded systems & software</p><h1>My projects</h1><p>Projects from classes, workshops, and things I wanted to try on my own.</p></div>
+  <Collection entries={projects} />
+  <section class="topic-index" aria-labelledby="topics-title"><p class="eyebrow">Connections</p><h2 id="topics-title">Explore a thread</h2>{topics.filter(topic => projects.some(project => project.data.tags.includes(topic.id))).map(topic => <div id={topic.id} class="topic-section"><h3>{topic.label}</h3><p>{topic.description}</p><ul>{projects.filter(p => p.data.tags.includes(topic.id)).map(p => <li><a href={`${import.meta.env.BASE_URL}projects/${p.id}/`}>{p.data.title}</a></li>)}</ul></div>)}</section>
+</Site>

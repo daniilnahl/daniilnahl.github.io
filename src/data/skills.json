@@ -1,0 +1,72 @@
+[
+  {
+    "label": "Languages",
+    "items": [
+      "C",
+      "C++",
+      "Python",
+      "Rust",
+      "SystemVerilog",
+      "Bash",
+      "MATLAB",
+      "Java"
+    ]
+  },
+  {
+    "label": "Embedded systems",
+    "items": [
+      "TI AM64x / AM243x",
+      "STM32",
+      "ESP32",
+      "xSPI",
+      "I2C",
+      "UART",
+      "RTC",
+      "PWM",
+      "BLE",
+      "FreeRTOS",
+      "lwIP (TCP/IP)",
+      "I2C EEPROM",
+      "SD card"
+    ]
+  },
+  {
+    "label": "Security",
+    "items": [
+      "Secure boot",
+      "X.509 certificates",
+      "Cryptographic signing",
+      "Root of trust"
+    ]
+  },
+  {
+    "label": "Software tools",
+    "items": [
+      "Git",
+      "STM32Cube",
+      "TI CCStudio",
+      "KiCad",
+      "Altium Designer",
+      "LTSpice",
+      "Edge Impulse",
+      "Linux CLI"
+    ]
+  },
+  {
+    "label": "Hardware tools",
+    "items": [
+      "Logic analyzer",
+      "Multimeter",
+      "Oscilloscope",
+      "Function generator",
+      "Soldering iron"
+    ]
+  },
+  {
+    "label": "Machine learning",
+    "items": [
+      "PyTorch",
+      "Flower"
+    ]
+  }
+]

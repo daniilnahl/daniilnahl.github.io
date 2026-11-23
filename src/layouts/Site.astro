@@ -1,0 +1,48 @@
+---
+import '../styles/global.css';
+import site from '../data/site.json';
+import { pathAtBase } from '../lib/urls.mjs';
+interface Props { title?: string; description?: string; home?: boolean; canonicalPath?: string; }
+const { title, description = site.description, home = false, canonicalPath } = Astro.props;
+const href = (path: string) => pathAtBase(path, import.meta.env.BASE_URL);
+const path = canonicalPath ?? Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '');
+const canonical = new URL(href(path || '/'), Astro.site ?? site.url);
+---
+<!doctype html>
+<html lang="en" data-mode="order">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#F7F8FA" />
+    <title>{title ? `${title} — ${site.name}` : `${site.name} — Computer Engineering @ UW`}</title>
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href={href('/favicon.svg')} />
+    <link rel="alternate" type="application/rss+xml" title={`${site.name}’s writing`} href={href('/rss.xml')} />
+    <meta property="og:title" content={title ? `${title} — ${site.name}` : `${site.name} — work & curiosities`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <script is:inline>
+      if (new URLSearchParams(location.search).get('mode') === 'chaos') document.documentElement.dataset.mode = 'chaos';
+    </script>
+  </head>
+  <body class:list={[{ 'is-home': home }]}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="wordmark" href={href('/')} aria-label={`${site.name}, home`}>{site.name}<span class="wordmark-mark" aria-hidden="true">✳</span></a>
+      <nav aria-label="Main navigation">
+        {site.navigation.map(item => <a href={href(item.path)} aria-current={Astro.url.pathname.startsWith(href(item.path)) ? 'page' : undefined}>{item.label}</a>)}
+        <a class="email-link" href={`mailto:${site.email}`}>Email</a>
+      </nav>
+      <button id="mode-control" class="mode-control" hidden type="button" aria-pressed="false"><span data-mode-label>i wonder what this button does?</span><span class="switch-symbol" aria-hidden="true">⌁</span></button>
+    </header>
+    <main id="main" tabindex="-1" class:list={[{ 'page-main': !home }]}><slot /></main>
+    <footer class="site-footer">
+      <div><a href={`mailto:${site.email}`}>Email me</a><p>Embedded systems, software, and things I’m learning.</p></div>
+      <div class="footer-links"><a href={site.github}>GitHub</a><a href={site.linkedin}>LinkedIn</a><a href={site.kaggle}>Kaggle</a><a href={href(site.resume)} data-no-mode download="Daniil-Nahliuk-Resume.pdf">Résumé (PDF)</a><a href={href('/rss.xml')} data-no-mode title="Subscribe in a feed reader to receive new blog posts">Blog feed (RSS)</a><span>© {new Date().getFullYear()} {site.name}</span></div>
+    </footer>
+    <p id="mode-announcement" class="sr-only" role="status" aria-live="polite"></p>
+    <script>import '../scripts/mode';</script>
+  </body>
+</html>

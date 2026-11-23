@@ -1,0 +1,15 @@
+---
+import Site from '../layouts/Site.astro';
+import ExperiencePeriod from '../components/shared/ExperiencePeriod.astro';
+import { catalog } from '../lib/catalog';
+import { render } from 'astro:content';
+const { experiences, projects } = await catalog();
+const rendered = await Promise.all(experiences.map(async entry => ({ entry, ...await render(entry) })));
+---
+<Site title="Experience" canonicalPath="/experience/">
+  <div class="page-heading"><p class="eyebrow">Experience</p><h1>Work & research.</h1><p>My past work and research, plus my next internship.</p></div>
+  <div class="experience-list">{rendered.map(({ entry, Content }) => <article class="experience-entry" id={entry.id}><div class="experience-date"><ExperiencePeriod start={entry.data.start} end={entry.data.end} period={entry.data.period} status={entry.data.status} /></div><div><p class="eyebrow">{entry.data.organization}</p><h2>{entry.data.role}</h2>{entry.data.location && <p class="experience-location">{entry.data.location}</p>}<div class="prose"><Content /></div>{entry.data.relatedProjects.length > 0 && <ul>{entry.data.relatedProjects.map(ref => {
+    const p = projects.find(p => `project:${p.id}` === ref)!;
+    return <li><a href={`${import.meta.env.BASE_URL}projects/${p.id}/`}>{p.data.title}</a></li>;
+  })}</ul>}</div></article>)}</div>
+</Site>

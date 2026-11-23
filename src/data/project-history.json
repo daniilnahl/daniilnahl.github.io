@@ -1,0 +1,80 @@
+{
+  "daniilnahl/Edge-Impulse-Workshop-Series": {
+    "repo": "daniilnahl/Edge-Impulse-Workshop-Series",
+    "count": 40,
+    "first": {
+      "sha": "ae9b8536688fdbddb5fb038efcaea4639f53d6f6",
+      "date": "2026-04-18T02:08:07Z",
+      "url": "https://github.com/daniilnahl/Edge-Impulse-Workshop-Series/commit/ae9b8536688fdbddb5fb038efcaea4639f53d6f6",
+      "parents": []
+    },
+    "latest": {
+      "sha": "0a5442d79a58653ac7b52311e231c1cbca892dfa",
+      "date": "2026-05-23T17:48:36Z",
+      "url": "https://github.com/daniilnahl/Edge-Impulse-Workshop-Series/commit/0a5442d79a58653ac7b52311e231c1cbca892dfa",
+      "parents": [
+        "d9104eddd643c1ad955b07cac24e83a3f3848dc0"
+      ]
+    },
+    "observedAt": "2026-11-22"
+  },
+  "RileyHop1/DJRTrailFinder": {
+    "repo": "RileyHop1/DJRTrailFinder",
+    "count": 47,
+    "first": {
+      "sha": "a9d975689e25221c139a2d8dc6334ba43215cd27",
+      "date": "2026-05-30T19:49:40Z",
+      "url": "https://github.com/RileyHop1/DJRTrailFinder/commit/a9d975689e25221c139a2d8dc6334ba43215cd27",
+      "parents": []
+    },
+    "latest": {
+      "sha": "68bebfb59dbfc4668d6c84c3971a39024dcf016a",
+      "date": "2026-07-25T23:46:30Z",
+      "url": "https://github.com/RileyHop1/DJRTrailFinder/commit/68bebfb59dbfc4668d6c84c3971a39024dcf016a",
+      "parents": [
+        "b6e7a4675174bef66715fa70b783af718bab5419",
+        "b2284e626eb8e2f38c8aa0e379b037a2d2f8c65a"
+      ]
+    },
+    "observedAt": "2026-11-22"
+  },
+  "daniilnahl/Stock-Tracking-App": {
+    "repo": "daniilnahl/Stock-Tracking-App",
+    "count": 323,
+    "first": {
+      "sha": "11ccf34c974fbfe2c831d8bbf2dff1aad5d15d6a",
+      "date": "2024-10-22T05:03:50Z",
+      "url": "https://github.com/daniilnahl/Stock-Tracking-App/commit/11ccf34c974fbfe2c831d8bbf2dff1aad5d15d6a",
+      "parents": []
+    },
+    "latest": {
+      "sha": "f83a6bcb7079601a9b483c0c55a79987f20fc807",
+      "date": "2026-10-22T23:48:18Z",
+      "url": "https://github.com/daniilnahl/Stock-Tracking-App/commit/f83a6bcb7079601a9b483c0c55a79987f20fc807",
+      "parents": [
+        "c766a9c0567dba44f9eed0c679d274e09dc2ff76",
+        "4b9b044b9bd9a469a969514634b0d166a6dff968"
+      ]
+    },
+    "observedAt": "2026-11-22"
+  },
+  "daniilnahl/Mini-Projects": {
+    "repo": "daniilnahl/Mini-Projects",
+    "count": 18,
+    "first": {
+      "sha": "e9e107f552b2f6f15da788d67bbc471e39eadfff",
+      "date": "2025-09-19T21:33:23Z",
+      "url": "https://github.com/daniilnahl/Mini-Projects/commit/e9e107f552b2f6f15da788d67bbc471e39eadfff",
+      "parents": []
+    },
+    "latest": {
+      "sha": "140d3728236470c6bd23f81a9bd47b93d641c56e",
+      "date": "2026-11-19T00:49:29Z",
+      "url": "https://github.com/daniilnahl/Mini-Projects/commit/140d3728236470c6bd23f81a9bd47b93d641c56e",
+      "parents": [
+        "880525047b93e328a77dd922e8a0dfc5f0eb71e3"
+      ]
+    },
+    "observedAt": "2026-11-22"
+  }
+}

@@ -1,0 +1,13 @@
+---
+import picks from '../../data/listening.json';
+interface Track { title: string; artist: string; url: string; }
+const tracks = picks.tracks as Track[];
+---
+<div class="listening" id="music">
+  <p class="eyebrow">Weekly top five</p>
+  <h3>On repeat.</h3>
+  {tracks.length ? <>
+    {picks.weekOf && <p class="music-week">Week of <time datetime={picks.weekOf}>{new Date(`${picks.weekOf}T00:00:00Z`).toLocaleDateString('en-US', { timeZone: 'UTC', dateStyle: 'long' })}</time></p>}
+    <ol class="weekly-tracks">{tracks.map(track => <li><a href={track.url}>{track.title}</a><span>{track.artist}</span></li>)}</ol>
+  </> : <p>No weekly picks added yet.</p>}
+</div>

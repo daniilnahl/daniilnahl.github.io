@@ -1,0 +1,4 @@
+---
+import Site from '../layouts/Site.astro';
+---
+<Site title="Page not found" canonicalPath="/404.html"><div class="page-heading"><p class="eyebrow">404</p><h1>Page not found.</h1><p>That link doesn't point to a page here.</p></div><nav class="recovery-links" aria-label="Find your way"><a href={import.meta.env.BASE_URL}>Return home</a><a href={`${import.meta.env.BASE_URL}projects/`}>Explore projects</a><a href={`${import.meta.env.BASE_URL}blog/`}>Visit the blog</a></nav></Site>

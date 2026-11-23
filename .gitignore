@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+playwright-report/
+test-results/
+.DS_Store
+# Local editorial inputs and implementation notes; not publication source.
+/Daniil-info-to-fill-in-the-website/
+/review-*.md
+/docs/IMPLEMENTATION.md
+
+/artifacts/

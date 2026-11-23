@@ -1,0 +1,23 @@
+---
+import { render } from 'astro:content';
+import { catalog } from '../../lib/catalog';
+import Reading from '../../layouts/Reading.astro';
+import { pathAtBase } from '../../lib/urls.mjs';
+export async function getStaticPaths() {
+  const { projects } = await catalog();
+  return projects.map(project => ({ params: { slug: project.id }, props: { project } }));
+}
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+<Reading title={project.data.title} summary={project.data.summary} eyebrow="Project" back={{ path: '/projects/', label: 'All projects' }} canonicalPath={`/projects/${project.id}/`}>
+  <div slot="metadata" class="project-metadata">
+    {project.data.role && <p><span>Contribution</span>{project.data.role}</p>}
+    <p><span>Tools</span>{project.data.technologies.join(' · ')}</p>
+    {project.data.dates && <p><span>{project.data.dateLabel ?? 'Dates'}</span>{project.data.dates}</p>}
+    <div class="project-links">{project.data.repository && <a href={project.data.repository}>Source on GitHub</a>}{project.data.demo && <a href={project.data.demo}>View demo</a>}</div>
+  </div>
+  {project.data.image && <img src={pathAtBase(project.data.image.src, import.meta.env.BASE_URL)} alt={project.data.image.alt} width={project.data.image.width} height={project.data.image.height} />}
+  {project.id === 'aqmod' && <figure><img src={pathAtBase('/images/aqmod-system.svg', import.meta.env.BASE_URL)} alt="System sketch: BMP280, MQ-9, and SEN54 sensors feed the ESP32-S3, which uses FreeRTOS, BLE, and TinyML." width="900" height="420" /><figcaption>Original system overview, based on the project README.</figcaption></figure>}
+  <Content />
+</Reading>
